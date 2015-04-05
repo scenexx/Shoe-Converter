@@ -10,6 +10,22 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var mensShoeSizeTextField: UITextField!
+    @IBOutlet weak var mensConvertedSizeLabel: UILabel!
+    let conversionConstant:Int = 30
+    
+    @IBAction func convertButtonPressed(sender: AnyObject) {
+        let sizeFrimField = mensShoeSizeTextField.text
+        let numberFromTextField = sizeFrimField.toInt()
+        var integerFromTextField:Int = numberFromTextField!
+        
+        integerFromTextField += conversionConstant
+        mensConvertedSizeLabel.hidden = false
+        let stringWithUpdatedShoeSize = "\(integerFromTextField)"
+        mensConvertedSizeLabel.text = stringWithUpdatedShoeSize
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
