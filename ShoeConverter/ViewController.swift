@@ -10,19 +10,24 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var mensShoeSizeTextField: UITextField!
-    @IBOutlet weak var mensConvertedSizeLabel: UILabel!
-    let conversionConstant:Int = 30
+    @IBOutlet weak var shoeSizeTextField: UITextField!
+    @IBOutlet weak var convertedSizeLabel: UILabel!
+
     
-    @IBAction func convertButtonPressed(sender: AnyObject) {
-        let sizeFrimField = mensShoeSizeTextField.text
-        let numberFromTextField = sizeFrimField.toInt()
-        var integerFromTextField:Int = numberFromTextField!
+    @IBAction func convertButtonPressed(sender: UIButton) {
+        var conversion:Double// added to American shoe size
         
-        integerFromTextField += conversionConstant
-        mensConvertedSizeLabel.hidden = false
-        let stringWithUpdatedShoeSize = "\(integerFromTextField)"
-        mensConvertedSizeLabel.text = stringWithUpdatedShoeSize
+        //determine conversion
+        if sender.currentTitle == "Women's Size"{
+            conversion = 30.5
+        }
+        else{
+            conversion = 30
+        }
+        
+        var shoeSize:Double = Double((shoeSizeTextField.text as NSString).doubleValue)
+        convertedSizeLabel.text = "\(shoeSize + conversion)"
+        convertedSizeLabel.hidden = false
         
     }
     
